@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Added 2 users successfully completed');
 
         foreach ($users as $user) {
-            \App\Models\User::factory(15)->create(['user_id' => $user->id]);
+            \App\Models\Product::factory(15)->create(['user_id' => $user->id]);
             $this->command->info('Added 15 products to user ' . $user->name . ' successfully completed');
         }
 
