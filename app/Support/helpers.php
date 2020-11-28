@@ -24,6 +24,17 @@ if (!function_exists('formatBytes')) {
 
 }
 
+if (!function_exists('format_price')) {
+
+    function format_price($price)
+    {
+        if (!is_numeric($price)) return 0;
+        $decimal = 0;
+        //if (is_real($price)) $decimal = 2;
+        return number_format($price, $decimal, '.', ' ');
+    }
+}
+
 if (!function_exists('asset_app')) {
 
     /**

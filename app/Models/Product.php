@@ -31,4 +31,8 @@ class Product extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function getImage() {
+        return $this->image_path ?: config('constants.images.default_product');
+    }
 }
