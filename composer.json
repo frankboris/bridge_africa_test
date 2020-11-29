@@ -20,6 +20,7 @@
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
+        "dczajkowski/auth-tests": "^8.0",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",

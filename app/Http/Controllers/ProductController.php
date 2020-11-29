@@ -87,7 +87,7 @@ class ProductController extends AuthController
 
     public function update(Request $request, Product $product)
     {
-        $form = $this->form(ProductForm::class);
+        $form = $this->form(ProductForm::class, ['model' => $product]);
         if (!$form->isValid()) {
             return back()->withErrors($form->getErrors())->withInput();
         }

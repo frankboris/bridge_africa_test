@@ -12,13 +12,24 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>Nom :</th>
+                                <td>{{ auth()->user()->name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email :</th>
+                                <td>{{ auth()->user()->email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date d'ajout :</th>
+                                <td>{{ auth()->user()->created_at }}</td>
+                            </tr>
+                            <tr>
+                                <th>Dernière modification :</th>
+                                <td>{{ auth()->user()->updated_at }}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

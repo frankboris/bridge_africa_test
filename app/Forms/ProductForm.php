@@ -16,10 +16,15 @@ class ProductForm extends Form
     {
         $model = $this->getModel();
 
+        $nameRules = 'required|max:150|unique:products,name';
+        if ($model) {
+            $nameRules = $nameRules.','.$model->id;
+        }
+
         $this
             ->add('name', 'text', [
                 'label' => 'Nom',
-                'rules' => 'required|max:150',
+                'rules' => $nameRules,
             ])
             ->add('price', 'number', [
                 'label' => 'Prix',
@@ -35,7 +40,7 @@ class ProductForm extends Form
             ])
             ->add('image', 'file', [
                 'label' => 'Image',
-                'rules' => '',
+                'rules' => 'mimes:jpeg,png,gif,jpg|max:10240',
                 'attr' => [
                     'class' => 'dropify',
                     'data-default-file' => $this->getImagePath($model)
