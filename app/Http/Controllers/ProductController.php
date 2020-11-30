@@ -62,12 +62,13 @@ class ProductController extends AuthController
             return back()->withErrors($form->getErrors())->withInput();
         }
         $inputs = array_filter($form->getFieldValues());
+        $inputs['published'] = key_exists('published', $inputs);
         if ($request->hasFile('image')) {
             $inputs['image_path'] = $this->uploader($request->file('image'), self::IMAGE_PATH);
         }
         $inputs['user_id'] = $this->getUser()->id;
         Product::query()->create($inputs);
-        return redirect()->route('account.products')->with('success', 'Marque de téléphone ajoutée avec succès !');
+        return redirect()->route('account.products')->with('success', 'Ajout effectué avec succès !');
     }
 
     public function show(Product $product)
@@ -97,12 +98,12 @@ class ProductController extends AuthController
         }
         $inputs['published'] = key_exists('published', $inputs);
         $product->fill($inputs)->save();
-        return redirect()->route('account.products')->with('success', 'Marque de téléphone mise à jour avec succès !');
+        return redirect()->route('account.products')->with('success', 'Mise à jour effectuée avec succès !');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('account.products')->with('success', 'Marque de téléphone restaurée avec succès !');
+        return redirect()->route('account.products')->with('success', 'Suppression effectuée avec succès !');
     }
 }
